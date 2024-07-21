@@ -12,6 +12,8 @@ public class Main {
         }
         Collections.sort(filterdList);
 
-        System.out.println(filterdList.toString());
+        for (var i: filterdList) {
+            System.out.println(i + " ");
+        }
     }
 }
