@@ -27,10 +27,10 @@ public class Main {
                 .filter(x -> x.getAge() < 27)
                 .map(x -> x.getFamily()).collect(Collectors.toList()));
         Stream<Person> stream3 = persons.stream();
-        System.out.println(stream3
+        stream3
                 .filter(x -> x.getEducation().equals(Education.HIGHER))
                 .filter(x -> (x.getSex().equals(Sex.MAN) & x.getAge() > 18 & x.getAge() < 65) || (x.getSex().equals(Sex.WOMAN) & x.getAge() > 18 & x.getAge() < 60))
-                .map(x -> x.getFamily())
-                .sorted(Comparator.naturalOrder()).collect(Collectors.toList()));
+                .sorted(Comparator.comparing(Person::getFamily))
+                .forEach(x -> System.out.println("Отсортированный список работоспособных людей: " + x.getFamily()));
     }
 }
