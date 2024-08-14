@@ -2,7 +2,7 @@
 # Понимание JVM
 
 
-``
+```
 public class JvmComprehension {
 
     public static void main(String[] args) {
@@ -18,7 +18,7 @@ public class JvmComprehension {
         System.out.println(o.toString() + i + ii);  // 6
     }
 }
-``
+```
 
 1. Загружаются класса в метаспейс с помощью ClassLoader.
 2. В стеке создается фрейм main
