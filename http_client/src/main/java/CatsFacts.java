@@ -1,10 +1,10 @@
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatsFacts {
-    public String id;
-    public String text;
-    public String user;
-    public String upvotes;
+    private final String id;
+    private final String text;
+    private final String user;
+    private final String upvotes;
 
     public CatsFacts(
             @JsonProperty("id") String id,
