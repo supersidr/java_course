@@ -8,10 +8,12 @@ public class PersonBuilder {
         this.name = name;
         return this;
     }
+
     public PersonBuilder setSurname(String surname) {
         this.surname = surname;
         return this;
     }
+
     public PersonBuilder setAge(int age) {
         if (age < 0) {
             throw new IllegalArgumentException("Age не может быть отрицательным");
@@ -19,6 +21,7 @@ public class PersonBuilder {
         this.age = age;
         return this;
     }
+
     public PersonBuilder setAddress(String address) {
         this.city = address;
         return this;

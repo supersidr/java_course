@@ -1,5 +1,5 @@
-import java.util.OptionalInt;
 import java.util.Objects;
+import java.util.OptionalInt;
 
 public class Person {
     protected final String name;
@@ -73,7 +73,7 @@ public class Person {
     }
 
     public PersonBuilder newChildBuilder() {
-        return  new PersonBuilder().setSurname(surname).setAge(age).setAddress(city);
+        return new PersonBuilder().setSurname(surname).setAge(age).setAddress(city);
     }
 
 }
