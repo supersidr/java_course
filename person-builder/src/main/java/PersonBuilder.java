@@ -33,7 +33,7 @@ public class PersonBuilder {
             throw new IllegalStateException("Заполните поле name");
         }
         if (this.surname == null) {
-            throw new IllegalArgumentException("Заполните поле surname");
+            throw new IllegalStateException("Заполните поле surname");
         }
         Person person = new Person(this.name, this.surname, this.age);
         person.setAddress(this.city);
