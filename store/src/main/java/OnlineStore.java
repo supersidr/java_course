@@ -1,12 +1,8 @@
-import java.util.List;
-import java.util.Scanner;
-
-// Основной класс с интерфейсом взаимодействия
 public class OnlineStore {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Shop shop = new Shop();
-        User user = new User("John Doe");
+        User user = new User("Igor Sidorov");
 
         while (true) {
             System.out.println("1. Посмотреть товары");
@@ -22,8 +18,8 @@ public class OnlineStore {
             switch (choice) {
                 case 1:
                     // Вывод всех товаров
-                    for (Product product : shop.getProducts()) {
-                        System.out.println(product);
+                    for (int i = 0; i < shop.getProducts().size(); i++) {
+                        System.out.println((i + 1) + ". " + shop.getProducts().get(i));
                     }
                     break;
                 case 2:
@@ -49,8 +45,32 @@ public class OnlineStore {
                     break;
                 case 4:
                     // Оформление заказа
-                    Order order = shop.placeOrder(user.getCart());
-                    System.out.println("Ваш заказ #" + order.getId() + " оформлен.");
+                    while (true) {
+                        System.out.println("Выберите товар для добавления в заказ:");
+                        for (int i = 0; i < shop.getProducts().size(); i++) {
+                            System.out.println((i + 1) + ". " + shop.getProducts().get(i));
+                        }
+                        System.out.println("0. Завершить выбор и оформить заказ");
+                        System.out.print("Введите номер товара: ");
+                        int productNumber = scanner.nextInt();
+
+                        if (productNumber == 0) {
+                            break; // Завершение выбора
+                        } else if (productNumber > 0 && productNumber <= shop.getProducts().size()) {
+                            Product selectedProduct = shop.getProducts().get(productNumber - 1);
+                            user.getCart().addProduct(selectedProduct);
+                            System.out.println("Товар " + selectedProduct.getName() + " добавлен в корзину.");
+                        } else {
+                            System.out.println("Неверный номер товара.");
+                        }
+                    }
+
+                    if (!user.getCart().getProducts().isEmpty()) {
+                        Order order = shop.placeOrder(user.getCart());
+                        System.out.println("Ваш заказ #" + order.getId() + " оформлен.");
+                    } else {
+                        System.out.println("Корзина пуста. Заказ не оформлен.");
+                    }
                     break;
                 case 5:
                     // Просмотр заказов
@@ -71,7 +91,6 @@ public class OnlineStore {
                         System.out.println(product);
                     }
                     break;
-
                 case 7:
                     System.out.println("Выход.");
                     return;
