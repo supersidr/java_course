@@ -16,4 +16,8 @@ public class PhoneBook {
         contacts.put(name.toUpperCase(), phoneNumber);
         return contacts.size();
     }
+
+    public static String findByNumber(Integer phoneNumber) {
+        return null;
+    }
 }

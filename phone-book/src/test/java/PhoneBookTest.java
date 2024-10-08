@@ -26,4 +26,12 @@ public class PhoneBookTest {
             phoneBook.add("Petya", 87654321); // This should throw an exception
         });
     }
+
+    @Test
+    void testFindByNumber() throws ContactAlreadyExistsException{
+        phoneBook.add("Masha", 12345679);
+        String result = phoneBook.findByNumber(12345679);
+        String expected = null;
+        assertEquals(expected, result);
+    }
 }
