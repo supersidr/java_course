@@ -31,7 +31,7 @@ public class PhoneBookTest {
     void testFindByNumber() throws ContactAlreadyExistsException{
         phoneBook.add("Masha", 12345679);
         String result = phoneBook.findByNumber(12345679);
-        String expected = null;
+        String expected = "Masha".toUpperCase();
         assertEquals(expected, result);
     }
 }

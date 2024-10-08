@@ -1,6 +1,8 @@
 package org.example;
 
 import java.util.HashMap;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class PhoneBook {
     protected HashMap<String, Integer> contacts;
@@ -17,7 +19,12 @@ public class PhoneBook {
         return contacts.size();
     }
 
-    public static String findByNumber(Integer phoneNumber) {
+    public String findByNumber(Integer phoneNumber) {
+        for (String name : contacts.keySet()) {
+            if (contacts.get(name).equals(phoneNumber)) {
+                return name;
+            }
+        }
         return null;
     }
 }
