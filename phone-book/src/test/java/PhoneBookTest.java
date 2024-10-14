@@ -34,4 +34,12 @@ public class PhoneBookTest {
         String expected = "Masha".toUpperCase();
         assertEquals(expected, result);
     }
+
+    @Test
+    void testFindByName() throws ContactAlreadyExistsException{
+        phoneBook.add("Masha", 12345679);
+        Integer result = phoneBook.findByName("Masha".toUpperCase());
+        Integer expected = 12345679;
+        assertEquals(expected, result);
+    }
 }
