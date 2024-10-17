@@ -1,7 +1,6 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class PhoneBook {
@@ -30,5 +29,17 @@ public class PhoneBook {
 
     public Integer findByName(String name) {
         return contacts.getOrDefault(name, null);
+    }
+
+    public void printAllNames() {
+        List<String> namesList = new ArrayList<>(contacts.keySet());
+
+        // Сортируем список имен
+        Collections.sort(namesList);
+
+        // Печатаем отсортированные имена
+        for (String name : namesList) {
+            System.out.println(name);
+        }
     }
 }
