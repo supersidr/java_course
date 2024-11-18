@@ -29,7 +29,7 @@ public class PostRepository {
     }
 
     public Post save(Post post) {
-        if (post.getId() != 0 && !posts.containsKey(post.getId())) {
+        if (post.getId() != 0 && !posts.containsKey(post.getId()) && post.isDeleted()) {
             throw new NotFoundException();
         }
 
@@ -44,8 +44,10 @@ public class PostRepository {
         return post;
     }
 
-    public void removeById(long id) {
-        posts.remove(id);
+    public void removeById(long id, Post post) {
+        if (posts.containsKey(id)) {
+            post.setDeleted(true);
+        }
         throw new NotFoundException();
     }
 }
