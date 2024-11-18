@@ -44,8 +44,9 @@ public class PostRepository {
         return post;
     }
 
-    public void removeById(long id, Post post) {
+    public void removeById(long id) {
         if (posts.containsKey(id)) {
+            Post post = posts.get(id);
             post.setDeleted(true);
         }
         throw new NotFoundException();
