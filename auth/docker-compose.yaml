@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  authorization-service:
+    build: . # Сборка образа из текущей директории
+    container_name: authorization-service
+    ports:
+      - "8080:8080" # Соответствие порта хоста и контейнера
