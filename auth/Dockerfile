@@ -1,5 +1,5 @@
 # Указываем базовый образ
-FROM openjdk:8-jdk-alpine
+FROM openjdk:17-jdk-alpine
 
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
