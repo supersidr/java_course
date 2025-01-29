@@ -1,22 +1,23 @@
 package ru.netology.daohybernate.repository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ru.netology.daohybernate.entity.Person;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public class PersonRepository {
+public interface PersonRepository extends JpaRepository<Person, String> {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    // Получить всех людей из указанного города
+    List<Person> findByCityOfLiving(String city);
 
-    public List<Person> getPersonsByCity(String city) {
-        String query = "SELECT p FROM Person p WHERE p.cityOfLiving = :city";
-        return entityManager.createQuery(query, Person.class)
-                .setParameter("city", city)
-                .getResultList();
-    }
+    // Найти всех людей, чей возраст меньше указанного, отсортировать по возрасту
+    List<Person> findByAgeLessThanOrderByAgeAsc(int age);
+
+    // Найти человека по имени и фамилии
+    @Query("SELECT p FROM Person p WHERE p.name = :name AND p.surname = :surname")
+    Optional<Person> findByNameAndSurname(String name, String surname);
 }
