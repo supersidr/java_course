@@ -21,12 +21,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/public").permitAll() // Open access to /public
-                        .requestMatchers(HttpMethod.POST, "/persons/{id}").hasRole("ADMIN") // Restrict POST by ID
-                        .requestMatchers(HttpMethod.DELETE, "/persons/{id}").hasRole("ADMIN") // Restrict DELETE by ID
-                        .anyRequest().authenticated() // Other endpoints require authentication
+                        .requestMatchers("/public").permitAll() 
+                        .requestMatchers(HttpMethod.POST, "/persons/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/persons/{id}").hasRole("ADMIN")
+                        .anyRequest().authenticated() 
                 )
-                .formLogin(withDefaults()) // Enable Spring Security login form
+                .formLogin(withDefaults())
                 .logout(logout -> logout.logoutUrl("/logout").permitAll());
 
         return http.build();
@@ -37,13 +37,13 @@ public class SecurityConfig {
         UserDetails user = User.withDefaultPasswordEncoder()
                 .username("user")
                 .password("password")
-                .roles("USER") // Regular user
+                .roles("USER")
                 .build();
 
         UserDetails admin = User.withDefaultPasswordEncoder()
                 .username("admin")
                 .password("admin123")
-                .roles("ADMIN") // Admin user with permissions
+                .roles("ADMIN") 
                 .build();
 
         return new InMemoryUserDetailsManager(user, admin);
